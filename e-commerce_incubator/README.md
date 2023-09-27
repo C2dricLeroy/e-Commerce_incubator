@@ -1,5 +1,11 @@
 # E-Commerce incubateur Front
 
+## Tools
+
+- Next.js
+- Axios
+- Formik
+
 ## Wireframes : 
 
 ### Homepage 
