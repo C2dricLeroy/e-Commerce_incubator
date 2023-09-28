@@ -26,7 +26,6 @@ export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropownRef = useRef(null);
 
-  // Custom hook to handle clicks outside of the dropdown
   useClickOutside(dropownRef, () => {
     setIsDropdownOpen(false);
   });
