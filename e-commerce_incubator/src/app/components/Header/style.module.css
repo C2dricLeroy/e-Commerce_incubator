@@ -6,22 +6,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 10%;
+
 }
 
-.titleContainer {
-    width: 40%;
-    padding: 2%;
-}
+
 
 .title {
     color: #74362D;
     font-family: NeutralFace, sans-serif;
     text-decoration: none;
+    font-size: 46px;
 }
 
 .subtitle {
-    color: #0C0B0A
+    color: #0C0B0A;
+    font-size: 24px;
 }
 
 .navContainer {
@@ -58,6 +57,7 @@
 .iconList {
     display: flex;
     flex-direction: row;
+    ;
 }
 
 .icon {
@@ -77,7 +77,10 @@
 
 .logoContainer {
     display: flex;
+    width: auto;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     padding: 2%;
 }
 
@@ -87,15 +90,14 @@
 }
 .dropdownContent {
     position: absolute;
-    right: 10px;
+    top: 130px;
+    right: 40px;
     background-color: #FAF2E7;
     border: 1px solid #ccc;
     padding: 10px;
     height: auto;
     border-radius: 4px;
-    box-shadow: -1px 0px 16px 4px rgba(0,0,0,0.21);
-    -webkit-box-shadow: -1px 0px 16px 4px rgba(0,0,0,0.21);
-    -moz-box-shadow: -1px 0px 16px 4px rgba(0,0,0,0.21);
+
     z-index: 999;
 }
 
@@ -111,15 +113,17 @@
 @media (max-width: 768px) {
     .headerContainer {
         flex-direction: column;
-        padding-bottom: 20%;
+
     }
 
     .titleContainer {
+        width: 50%;
         text-align: center;
     }
 
     .navContainer {
         width: auto;
+        height: auto;
         display: flex;
         flex-direction: column;
     }
@@ -131,6 +135,23 @@
 
     .dropdownContent {
         max-height: 8%;
-        right: initial;
+        position: initial;
+    }
+
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 20px;
     }
 }

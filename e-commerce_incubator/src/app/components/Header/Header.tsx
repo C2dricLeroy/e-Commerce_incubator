@@ -13,7 +13,9 @@ export default function Header() {
   return (
       <header className={styles.headerContainer}>
           <div className={styles.logoContainer} >
-              <img src="../../../../public/logo.svg" alt="MeowSic Logo" />
+              <svg width="100" height="100" href="../../../../public/logo.svg">
+                  <image className={styles.logo} href="/logo.svg" width="100" height="100" />
+              </svg>
               <div className={styles.titleContainer}>
                   <h1>
                       <Link className={styles.title}href="/">
@@ -22,7 +24,6 @@ export default function Header() {
                   </h1>
                   <h2 className={styles.subtitle}>Toute la musique que vos animaux désirent!</h2>
               </div>
-
           </div>
           <div className={styles.navContainer}>
               <SearchBar></SearchBar>
@@ -38,21 +39,22 @@ export default function Header() {
                              onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                               <FaUser/>
                           </a>
-                          {isDropdownOpen && (
-                              <div className={styles.dropdownContent} >
-                                      <div>
-                                          <Link href={'/login'}>
-                                              <p className={styles.link}>Se connecter</p>
-                                          </Link>
-                                      </div>
-                                      <div>
-                                          <Link href={'/login'}>
-                                              <p className={styles.link}><b>S&apos;inscrire</b></p>
-                                          </Link>
-                                  </div>
-                              </div>
-                          )}
+
                       </li>
+                      {isDropdownOpen && (
+                          <div className={styles.dropdownContent} >
+                              <div>
+                                  <Link href={'/login'}>
+                                      <p className={styles.link}>Se connecter</p>
+                                  </Link>
+                              </div>
+                              <div>
+                                  <Link href={'/login'}>
+                                      <p className={styles.link}><b>S&apos;inscrire</b></p>
+                                  </Link>
+                              </div>
+                          </div>
+                      )}
                   </ul>
               </nav>
           </div>
