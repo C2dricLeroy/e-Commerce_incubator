@@ -22,6 +22,9 @@ export default function LoginForm() {
                   id="email"
                   name="email"
                   className={styles.input}
+                  value={loginViewModel.email}
+                  onFocus={() => loginViewModel.setError(false)}
+                  onChange={(e) => loginViewModel.setEmail(e.target.value)}
                   placeholder="Entrez votre adresse e-mail"
                   required
               />
@@ -34,11 +37,16 @@ export default function LoginForm() {
                   type="password"
                   id="password"
                   name="password"
+                  value={loginViewModel.password}
+                  onChange={(e) => loginViewModel.setPassword(e.target.value)}
                   className={styles.input}
+                  onFocus={() => loginViewModel.setError(false)}
                   placeholder="Entrez votre mot de passe"
                   required
               />
             </div>
+            {loginViewModel.error
+                && <p className={styles.error}>Invalid email or password. Please try again</p>}
             <div className={styles.forgotPassword}>
               <a href="#" className={styles.forgotPasswordLink}>
                 Mot de passe oublié ?
