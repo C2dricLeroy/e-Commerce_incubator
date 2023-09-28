@@ -3,12 +3,33 @@
 // @ts-ignore
 import SearchBar from '@/app/components/Header/searchBar.tsx';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './style.module.css';
 
+function useClickOutside(ref: any, callback: any) {
+  useEffect(() => {
+    function handleClickOutside(event: any) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        callback();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, callback]);
+}
+
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropownRef = useRef(null);
+
+  // Custom hook to handle clicks outside of the dropdown
+  useClickOutside(dropownRef, () => {
+    setIsDropdownOpen(false);
+  });
 
   return (
       <header className={styles.headerContainer}>
@@ -42,7 +63,7 @@ export default function Header() {
 
                       </li>
                       {isDropdownOpen && (
-                          <div className={styles.dropdownContent} >
+                          <div className={styles.dropdownContent} ref={dropownRef} >
                               <div>
                                   <Link href={'/login'}>
                                       <p className={styles.link}>Se connecter</p>
