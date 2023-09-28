@@ -34,10 +34,31 @@ body, html, div {
   padding: 0;
 }
 
+html {
+  background-color: #FAF2E7;
+}
 
+h1, H2 {
+  font-family: NeutralFace, sans-serif;
+}
+
+p, a, label, input {
+  font-family: Lora, serif;
+}
 
 html {
   height: 100%;
   width: 100%;
   min-width: 100%;
 }
+
+@font-face {
+  font-family: 'NeutralFace';
+  src: url('../../public/fonts/NeutralFace.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('../../public/fonts/Lora-Regular.ttf') format('truetype');
+}
+

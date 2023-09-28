@@ -7,25 +7,25 @@ export default function Header() {
   return (
       <header className={styles.headerContainer}>
           <div className={styles.titleContainer}>
-              <h1 className={styles.title}>
-                  <a href="#">
+              <h1>
+                  <a className={styles.title}href="#">
                       Harmony
                   </a>
               </h1>
-              <h2>Toute la musique que vos animaux désirent!</h2>
+              <h2 className={styles.subtitle}>Toute la musique que vos animaux désirent!</h2>
           </div>
           <div className={styles.navContainer}>
               <SearchBar></SearchBar>
               <nav>
-                  <ul >
+                  <ul className={styles.iconList} >
                       <li >
-                          <a href="#">
-                              Products
+                          <a className={styles.icon} href="#">
+                              <FaShoppingCart/>
                           </a>
                       </li>
                       <li>
-                          <a href="#">
-                              About
+                          <a className={styles.icon} href="#">
+                              <FaUser/>
                           </a>
                       </li>
                   </ul>
