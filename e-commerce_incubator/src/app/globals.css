@@ -52,6 +52,10 @@ html {
   min-width: 100%;
 }
 
+body {
+  background-color: #FAF2E7;
+}
+
 @font-face {
   font-family: 'NeutralFace';
   src: url('../../public/fonts/NeutralFace.otf') format('truetype');

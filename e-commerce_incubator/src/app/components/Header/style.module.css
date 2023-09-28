@@ -1,13 +1,12 @@
 .headerContainer {
     width: 100%;
     height: auto;
-    position: absolute;
-    top: 0;
     background-color: #FAF2E7;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 10%;
 }
 
 .titleContainer {
@@ -64,17 +63,55 @@
 .icon {
     font-size: 2rem;
     margin: 10px;
-    color: #0C0B0A
+    color: #0C0B0A;
+    position: relative;
+}
+
+.link {
+    color: #0C0B0A;
+    padding: 2px;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
 }
 
 .icon:hover {
     color: #D78975;
     cursor: pointer;
 }
+.dropdownContent {
+    position: absolute;
+    right: 10px;
+    background-color: #FAF2E7;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: -1px 0px 16px 4px rgba(0,0,0,0.21);
+    -webkit-box-shadow: -1px 0px 16px 4px rgba(0,0,0,0.21);
+    -moz-box-shadow: -1px 0px 16px 4px rgba(0,0,0,0.21);
+    z-index: 999;
+}
+
+.dropDownMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
 
 @media (max-width: 768px) {
     .headerContainer {
         flex-direction: column;
+        padding-bottom: 20%;
     }
 
     .titleContainer {
@@ -90,5 +127,10 @@
     .iconList {
         padding: 0;
         margin-top: 20%;
+    }
+
+    .dropdownContent {
+        max-height: 8%;
+        right: initial;
     }
 }
