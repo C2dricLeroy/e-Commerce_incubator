@@ -16,10 +16,10 @@ export default function useLoginViewModel() {
   const signinSubmit = async (e: any) => {
     e.preventDefault();
     try {
-
-    } catch (error: any) {
-      console.error(error);
-      if (error.response && error.response.status === 400) {
+      login.submitLogin(email, password);
+    } catch (e: any) {
+      console.error(e.message);
+      if (e.response && e.response.status === 400) {
         setError(true);
       }
     }

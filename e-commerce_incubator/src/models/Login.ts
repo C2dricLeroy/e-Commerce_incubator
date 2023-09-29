@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-class Login {
-  private async submitLogin(email: string, password: string) {
+export default class Login {
+  test = '';
+
+  async submitLogin(email: string, password: string) {
     try {
+      this.test = '';
       const response = await axios.post(
         `${process.env.SERVER_URL}user/login`,
         { email, password },
@@ -14,10 +17,8 @@ class Login {
       } else {
         console.error('xsrf_token not found in the response');
       }
-    } catch {
-
+    } catch (error: any) {
+      throw new Error(error.message);
     }
   }
 }
-
-module.exports = Login;
