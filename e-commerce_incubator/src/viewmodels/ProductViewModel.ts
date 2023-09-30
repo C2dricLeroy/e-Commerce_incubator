@@ -3,12 +3,11 @@ import Products from '@/models/Products.ts';
 import { useEffect, useState } from 'react';
 
 export default function useProductsViewModel() {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState<any>();
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        console.log('before API call');
         const response = await Products.getTop();
         console.log(response);
         setProducts(response);
