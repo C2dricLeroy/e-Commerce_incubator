@@ -7,6 +7,32 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './style.module.css';
 
+function useHover(ref: any, callback: any) {
+  useEffect(() => {
+    function handleMouseEnter() {
+      callback(true);
+    }
+
+    function handleMouseLeave() {
+      callback(false);
+    }
+
+    const element = ref.current; // Stockez la référence dans une variable
+
+    if (element) {
+      element.addEventListener('mouseenter', handleMouseEnter);
+      element.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        element.removeEventListener('mouseenter', handleMouseEnter);
+        element.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+
+    return undefined;
+  }, [ref, callback]);
+}
+
 function useClickOutside(ref: any, callback: any) {
   useEffect(() => {
     function handleClickOutside(event: any) {
@@ -24,10 +50,27 @@ function useClickOutside(ref: any, callback: any) {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropownRef = useRef(null);
+  const dropdownRef = useRef<any>(null);
+  const dropdownHoverRef = useRef<any>(null);
+  const userIconRef = useRef(null);
 
-  useClickOutside(dropownRef, () => {
+  useClickOutside(dropdownRef, () => {
     setIsDropdownOpen(false);
+  });
+
+  useHover(userIconRef, (hovered: any) => {
+    if (hovered) {
+      setIsDropdownOpen(true);
+    } else {
+      setIsDropdownOpen(false);
+    }
+  });
+  useHover(dropdownRef, (hovered: any) => {
+    if (hovered) {
+      setIsDropdownOpen(true);
+    } else {
+      setIsDropdownOpen(false);
+    }
   });
 
   return (
@@ -49,20 +92,21 @@ export default function Header() {
               <SearchBar></SearchBar>
               <nav>
                   <ul className={styles.iconList} >
-                      <li >
+                      <li className={styles.li}>
                           <a className={styles.icon} href="#">
                               <FaShoppingCart/>
                           </a>
                       </li>
-                      <li>
+                      <li className={styles.li}>
                           <a className={styles.icon}
-                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                             ref={userIconRef}>
                               <FaUser/>
                           </a>
 
                       </li>
                       {isDropdownOpen && (
-                          <div className={styles.dropdownContent} ref={dropownRef} >
+                          <div className={styles.dropdownContent} ref={dropdownRef} >
                               <div>
                                   <Link href={'/login'}>
                                       <p className={styles.link}>Se connecter</p>
