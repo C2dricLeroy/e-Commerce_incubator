@@ -42,7 +42,7 @@ export default function Header() {
                           Meowsic
                       </Link>
                   </h1>
-                  <h2 className={styles.subtitle}>Toute la musique que vos animaux désirent!</h2>
+                  <h2 className={styles.subtitle}>Felling grooves for happy moves</h2>
               </div>
           </div>
           <div className={styles.navContainer}>
