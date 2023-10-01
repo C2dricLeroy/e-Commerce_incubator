@@ -17,7 +17,7 @@ function useHover(ref: any, callback: any) {
       callback(false);
     }
 
-    const element = ref.current; // Stockez la référence dans une variable
+    const element = ref.current;
 
     if (element) {
       element.addEventListener('mouseenter', handleMouseEnter);

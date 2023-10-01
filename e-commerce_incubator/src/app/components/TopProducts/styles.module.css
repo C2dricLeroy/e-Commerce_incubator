@@ -1,5 +1,4 @@
 .topContainer {
-    margin: 2%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -7,6 +6,7 @@
     align-items: center;
     background-color: white;
     border-radius: 4px;
+    margin: 50% 2% 2%;
 }
 
 .container {
@@ -16,7 +16,6 @@
     width: 100%;
     background-color: white;
     text-align: center;
-
 }
 
 .title {

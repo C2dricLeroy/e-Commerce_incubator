@@ -5,6 +5,7 @@
 - Next.js
 - Axios
 - Formik
+- Yup
 
 ## Wireframes : 
 
