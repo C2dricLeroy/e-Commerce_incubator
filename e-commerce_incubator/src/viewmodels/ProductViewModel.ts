@@ -11,7 +11,6 @@ export default function useProductsViewModel() {
     async function fetchtopProducts() {
       try {
         const response = await Products.getTop();
-        console.log(response);
         setTopProducts(response);
       } catch (error) {
         console.error('Erreur lors de la récupération des produits :', error);

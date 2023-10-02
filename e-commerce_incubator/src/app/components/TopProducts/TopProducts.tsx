@@ -2,10 +2,12 @@
 
 // @ts-ignore
 import useProductsViewModel from '@/viewmodels/ProductViewModel.ts';
+import { useRouter } from 'next/navigation';
 import styles from './styles.module.css';
 
 export default function TopProducts() {
   const productsViewModel = useProductsViewModel();
+  const router = useRouter();
 
   return (
         <div className={styles.container} key="uniquevalue">
@@ -17,9 +19,9 @@ export default function TopProducts() {
                         <div className={styles.card} key={product.name}>
                             <div className={styles.product}>
                                 <p className={styles.category}>{product.product_type.name}</p>
-                                <img className={styles.productImage} src={`/products_images/${product.image_path}`} alt={`${product.name} image`} />
+                                <img onClick={() => router.push(`/products/${product.product_id}`)} className={styles.productImage} src={`/products_images/${product.image_path}`} alt={`${product.name} image`} />
                             </div>
-                            <div className={styles.productText}>
+                            <div className={styles.productText} onClick={() => router.push(`/products/${product.product_id}`)}>
                                 <h2 className={styles.productTitle}>{product.name}</h2>
                                 <p className={styles.productPrice}>{product.price} €</p>
                             </div>
