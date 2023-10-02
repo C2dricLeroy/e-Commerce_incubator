@@ -12,8 +12,8 @@ export default function TopProducts() {
             <div className={styles.topContainer}>
                 <h1 className={styles.title}>Nos meilleurs produits</h1>
                 <div className={styles.cardContainer}>
-                    {productsViewModel.products
-                        && productsViewModel.products.map((product: any) => (
+                    {productsViewModel.topProducts
+                        && productsViewModel.topProducts.map((product: any) => (
                         <div className={styles.card} key={product.name}>
                             <div className={styles.product}>
                                 <p className={styles.category}>{product.product_type.name}</p>
