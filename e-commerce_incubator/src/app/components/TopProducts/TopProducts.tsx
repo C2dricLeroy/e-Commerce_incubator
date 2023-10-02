@@ -14,7 +14,16 @@ export default function TopProducts() {
                 <div className={styles.cardContainer}>
                     {productsViewModel.products
                         && productsViewModel.products.map((product: any) => (
-                        <h2 key={product.name}>{product.name}</h2>
+                        <div className={styles.card} key={product.name}>
+                            <div className={styles.product}>
+                                <p className={styles.category}>{product.product_type.name}</p>
+                                <img className={styles.productImage} src={`/products_images/${product.image_path}`} alt={`${product.name} image`} />
+                            </div>
+                            <div className={styles.productText}>
+                                <h2 className={styles.productTitle}>{product.name}</h2>
+                                <p className={styles.productPrice}>{product.price} €</p>
+                            </div>
+                        </div>
                         ))}
                 </div>
             </div>
