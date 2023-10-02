@@ -1,5 +1,6 @@
 // @ts-ignore
 import useProductsViewModel from '@/viewmodels/ProductViewModel.ts';
+import SearchBar from '@/app/components/Header/searchBar';
 import styles from './styles.module.css';
 
 export default function ProductsComponents() {
@@ -9,6 +10,12 @@ export default function ProductsComponents() {
       <div className={styles.container} key="uniquevalue2">
           <div className={styles.topContainer}>
               <h1 className={styles.title}>Tous nos produits</h1>
+              <div className={styles.parameters}>
+                  <SearchBar></SearchBar>
+                  <div className={styles.categoryFilter}>
+                      <p>categoryfilter</p>
+                  </div>
+              </div>
               <div className={styles.cardContainer}>
                   {productsViewModel.products
                       && productsViewModel.products.map((product: any) => (
