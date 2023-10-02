@@ -13,7 +13,17 @@ export default function ProductsComponents() {
               <div className={styles.parameters}>
                   <SearchBar></SearchBar>
                   <div className={styles.categoryFilter}>
-                      <p>categoryfilter</p>
+                      <p>Filtrer par catégorie :</p>
+                      <select
+                          value={productsViewModel.selectedCategory}
+                          onChange={(e) => productsViewModel.setSelectedCategory(e.target.value)}
+                      >
+                          <option value="">Toutes</option>
+                          <option value="1">Instruments</option>
+                          <option value="2">CD</option>
+                          <option value="3">Vinyls</option>
+                          <option value="4">Concerts</option>
+                      </select>
                   </div>
               </div>
               <div className={styles.cardContainer}>

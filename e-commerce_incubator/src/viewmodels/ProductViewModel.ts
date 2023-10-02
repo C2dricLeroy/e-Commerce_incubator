@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 export default function useProductsViewModel() {
   const [topProducts, setTopProducts] = useState<any>();
   const [products, setProducts] = useState<any>();
+  const [selectedCategory, setSelectedCategory] = useState<any>('');
 
   useEffect(() => {
     async function fetchtopProducts() {
@@ -19,17 +20,25 @@ export default function useProductsViewModel() {
     async function fetchProducts() {
       try {
         const response = await Products.getAll();
-        setProducts(response);
+        const productToDisplay: any = [];
+        response.forEach((product: any) => {
+          if (product.product_type_id == selectedCategory || selectedCategory === '') {
+            productToDisplay.push(product);
+          }
+        });
+        setProducts(productToDisplay);
       } catch (error) {
         console.error('Erreur lors de la récupération des produits :', error);
       }
     }
     fetchProducts();
     fetchtopProducts();
-  }, []);
+  }, [selectedCategory]);
 
   return {
     topProducts,
     products,
+    setSelectedCategory,
+    selectedCategory,
   };
 }
