@@ -6,7 +6,7 @@ import Header from '@/app/components/Header/Header.tsx';
 // @ts-ignore
 import TopProducts from '@/app/components/TopProducts/TopProducts.tsx';
 // @ts-ignore
-import ProductsComponents from '@/app/components/products/productsComponent.tsx';
+import ProductsComponents from '@/app/components/products/allProducts/productsComponent.tsx';
 
 export default function Home() {
   return (

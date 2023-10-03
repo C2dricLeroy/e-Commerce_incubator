@@ -103,7 +103,6 @@ export default function Header() {
                              ref={userIconRef}>
                               <FaUser/>
                           </a>
-
                       </li>
                       {isDropdownOpen && (
                           <div className={styles.dropdownContent} ref={dropdownRef} >
