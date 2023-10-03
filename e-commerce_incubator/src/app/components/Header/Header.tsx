@@ -85,7 +85,7 @@ export default function Header() {
                           Meowsic
                       </Link>
                   </h1>
-                  <h2 className={styles.subtitle}>Felling grooves for happy moves</h2>
+                  <h2 className={styles.subtitle}>Feline grooves for happy moves</h2>
               </div>
           </div>
           <div className={styles.navContainer}>
@@ -112,7 +112,7 @@ export default function Header() {
                                   </Link>
                               </div>
                               <div>
-                                  <Link href={'/login'}>
+                                  <Link href={'/signup'}>
                                       <p className={styles.link}><b>S&apos;inscrire</b></p>
                                   </Link>
                               </div>

@@ -12,7 +12,7 @@ export default function TopProducts() {
   return (
         <div className={styles.container} key="uniquevalue">
             <div className={styles.topContainer}>
-                <h1 className={styles.title}>Nos meilleurs produits</h1>
+                <h1 className={styles.title}>Nos meilleures ventes</h1>
                 <div className={styles.cardContainer}>
                     {productsViewModel.topProducts
                         && productsViewModel.topProducts.map((product: any) => (
