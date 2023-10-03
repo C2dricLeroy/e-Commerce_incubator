@@ -47,7 +47,8 @@ export default function LoginForm() {
               />
             </div>
             {loginViewModel.error
-                && <p className={styles.error}>Invalid email or password. Please try again</p>}
+                && <p className={styles.errorMessage}
+                >Invalid email or password. Please try again</p>}
             <div className={styles.forgotPassword}>
               <a href="#" className={styles.forgotPasswordLink}>
                 Mot de passe oublié ?
@@ -58,7 +59,8 @@ export default function LoginForm() {
                 Pas encore inscrit ?
               </a>
             </div>
-            <button type="submit" className={styles.submitButton}>
+            <button type="submit" className={styles.submitButton}
+                    onClick={(e) => loginViewModel.signinSubmit(e)}>
               Connexion
             </button>
           </form>

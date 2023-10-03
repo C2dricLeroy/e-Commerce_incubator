@@ -12,11 +12,44 @@ export default function useLoginViewModel() {
 
   const router = useRouter();
   const login = new Login();
+  const isValidEmail = (emailToCheck: string) => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(emailToCheck);
+  };
 
-  const signinSubmit = async (e: any) => {
-    e.preventDefault();
+  const isValidPassword = (passwordToCheck: string) => {
+    if (passwordToCheck.length < 8) {
+      return false;
+    }
+
+    if (!/[A-Z]/.test(passwordToCheck)) {
+      return false;
+    }
+
+    if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(passwordToCheck)) {
+      return false;
+    }
+
+    if (!/\d/.test(passwordToCheck)) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const isValidData = () => isValidEmail(email) && isValidPassword(password);
+
+  const signinSubmit = async (event: any) => {
+    event.preventDefault();
+
+    if (!isValidData()) {
+      console.log('Données invalides, veuillez corriger les erreurs.');
+      return;
+    }
+
     try {
-      login.submitLogin(email, password);
+      await login.submitLogin(email, password);
+      router.push('/');
     } catch (e: any) {
       console.error(e.message);
       if (e.response && e.response.status === 400) {

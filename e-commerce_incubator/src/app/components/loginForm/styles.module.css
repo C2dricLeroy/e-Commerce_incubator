@@ -19,6 +19,19 @@
     align-items: center;
 }
 
+.error {
+    border: 2px solid darkred;
+}
+
+.error:focus {
+    border: 2px solid darkred;
+    outline: darkred;
+}
+
+.errorMessage{
+    color: #74362D;
+}
+
 .title {
     font-size: 36px;
     margin: 3%;
