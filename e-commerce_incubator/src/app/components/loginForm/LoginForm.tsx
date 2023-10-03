@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 
 export default function LoginForm() {
   const loginViewModel = useLoginViewModel();
+  const router = useRouter();
 
   return (
       <div className={styles.cont}>
@@ -52,7 +53,7 @@ export default function LoginForm() {
                 Mot de passe oublié ?
               </a>
             </div>
-            <div className={styles.signup}>
+            <div className={styles.signup} onClick={() => router.push('/signup')}>
               <a>
                 Pas encore inscrit ?
               </a>
