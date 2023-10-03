@@ -24,8 +24,11 @@ export default function SignupForm() {
                             name="Username"
                             className={styles.input}
                             value={signupViewModel.username}
-                            onFocus={() => signupViewModel.setError(false)}
-                            onChange={(e) => signupViewModel.setUsername(e.target.value)}
+                            onFocus={() => signupViewModel.setGlobalError(false)}
+                            onChange={(e) => {
+                              signupViewModel.setUsername(e.target.value);
+                              signupViewModel.validateData();
+                            }}
                             placeholder="Entrez votre nom d'utilisateur"
                             required
                         />
@@ -38,13 +41,23 @@ export default function SignupForm() {
                             type="email"
                             id="email"
                             name="email"
-                            className={styles.input}
+                            className={`${styles.input} ${signupViewModel.emailError ? styles.error : ''}` }
                             value={signupViewModel.email}
-                            onFocus={() => signupViewModel.setError(false)}
-                            onChange={(e) => signupViewModel.setEmail(e.target.value)}
+                            onFocus={() => {
+                              signupViewModel.setGlobalError(false);
+                              signupViewModel.setEmailError(false);
+                            }
+                                }
+                            onChange={(e) => {
+                              signupViewModel.setEmail(e.target.value);
+                              signupViewModel.isValidEmail(e.target.value);
+                            }}
                             placeholder="Entrez votre adresse e-mail"
                             required
                         />
+                        {signupViewModel.emailError && <p
+                            className={styles.errorMessage}
+                        >{signupViewModel.emailErrorMessage}</p>}
                     </div>
                     <div className={styles.formGroup}>
                         <label htmlFor="password" className={styles.label}>
@@ -55,13 +68,25 @@ export default function SignupForm() {
                             id="password"
                             name="password"
                             value={signupViewModel.password}
-                            onChange={(e) => signupViewModel.setPassword(e.target.value)}
-                            className={styles.input}
-                            onFocus={() => signupViewModel.setError(false)}
+                            onChange={(e) => {
+                              signupViewModel.setPassword(e.target.value);
+                              signupViewModel.isValidPassword(e.target.value);
+                            }}
+                            className={`${styles.input} ${signupViewModel.passwordError ? styles.error : ''}` }
+                            onFocus={() => {
+                              signupViewModel.setPasswordError(false);
+                              signupViewModel.setGlobalError(false);
+                            }}
                             placeholder="Entrez votre mot de passe"
                             required
                         />
+                        {signupViewModel.passwordError
+                            && <p className={styles.errorMessage}
+                            >{signupViewModel.passwordErrorMessage}</p>}
                     </div>
+                    {signupViewModel.globalError && <p
+                        className={styles.errorMessage}
+                    >{signupViewModel.globalErrorMessage}</p>}
                     <div className={styles.signup} onClick={() => router.push('/login')}>
                         <a>
                             Vous possédez déjà un compte? Login
@@ -69,7 +94,7 @@ export default function SignupForm() {
                     </div>
                     <button type="submit" className={styles.submitButton}
                             onClick={signupViewModel.handleSubmit}>
-                        Connexion
+                        Inscription
                     </button>
                 </form>
             </div>

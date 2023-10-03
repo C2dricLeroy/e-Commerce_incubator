@@ -87,6 +87,21 @@
     cursor: pointer;
 }
 
+.error {
+    border: 2px solid darkred;
+}
+
+.error:focus {
+    border: 2px solid darkred;
+    outline: darkred;
+}
+
+
+
+.errorMessage{
+    color: #74362D;
+}
+
 @media (max-width: 768px) {
     .container {
         width: 100%;
