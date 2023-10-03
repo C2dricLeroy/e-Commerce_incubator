@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// @ts-ignore
+import User from '@/models/User.ts';
 
 export default function useSignupViewModel() {
   const [email, setEmail] = useState('');
@@ -6,6 +8,8 @@ export default function useSignupViewModel() {
   const [username, setUsername] = useState('');
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const user = new User();
 
   const isValidEmail = (emailToCheck: string) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -46,7 +50,8 @@ export default function useSignupViewModel() {
     const isValid = validateData();
 
     if (isValid) {
-      console.log('Données valides, envoi vers le backend...');
+      const response = await user.createUser(username, email, password);
+      console.log(response);
     } else {
       console.log('Données invalides, veuillez corriger les erreurs.');
     }
@@ -63,5 +68,6 @@ export default function useSignupViewModel() {
     setError,
     validateData,
     handleSubmit,
+    errorMessage,
   };
 }
