@@ -12,7 +12,7 @@ export default function SignupForm() {
   return (
         <div className={styles.cont}>
             <div className={styles.container}>
-                <h1 className={styles.title}>Connexion</h1>
+                <h1 className={styles.title}>Inscription</h1>
                 <form className={styles.form}>
                     <div className={styles.formGroup}>
                         <label htmlFor="username" className={styles.label}>
@@ -46,7 +46,6 @@ export default function SignupForm() {
                             required
                         />
                     </div>
-
                     <div className={styles.formGroup}>
                         <label htmlFor="password" className={styles.label}>
                             Mot de passe
@@ -68,7 +67,8 @@ export default function SignupForm() {
                             Vous possédez déjà un compte? Login
                         </a>
                     </div>
-                    <button type="submit" className={styles.submitButton}>
+                    <button type="submit" className={styles.submitButton}
+                            onClick={signupViewModel.handleSubmit}>
                         Connexion
                     </button>
                 </form>
