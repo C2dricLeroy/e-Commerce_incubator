@@ -94,8 +94,8 @@
 }
 .dropdownContent {
     position: absolute;
-    top: 130px;
-    right: 40px;
+    top: 145px;
+    right: 5px;
     background-color: #2D3142;
     border: none;
     padding: 10px;

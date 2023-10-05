@@ -7,8 +7,6 @@ import Header from '@/app/components/Header/Header.tsx';
 import TopProducts from '@/app/components/TopProducts/TopProducts.tsx';
 // @ts-ignore
 import ProductsComponents from '@/app/components/products/allProducts/productsComponent.tsx';
-// @ts-ignore
-import { AuthProvider } from '@/app/context/AuthContext.tsx';
 
 export default function Home() {
   return (

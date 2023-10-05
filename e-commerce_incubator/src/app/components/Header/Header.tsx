@@ -118,9 +118,11 @@ export default function Header() {
                           <div className={styles.dropdownContent} ref={dropdownRef}>
                               {auth?.user ? (
                                   <div>
-                                      <p>Logged In</p>
-                                      <a onClick={handleLogout}
-                                      >Déconnexion</a>
+                                      <Link href={'/account'}>
+                                          <p className={styles.link}>Mon compte</p>
+                                      </Link>
+                                      <a className={styles.link}
+                                         onClick={handleLogout}><b>Déconnexion</b></a>
                                   </div>
                               ) : (
                                   <>
