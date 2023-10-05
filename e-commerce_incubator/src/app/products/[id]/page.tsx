@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 // @ts-ignore
 import Header from '@/app/components/Header/Header.tsx';
+// @ts-ignore
+import Footer from '@/app/components/footer/Footer.tsx';
 import styles from './styles.module.css';
 
 interface PageProps {
@@ -68,6 +70,7 @@ export default function Page({ params, searchParams }: PageProps) {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
 
         </div>
   );

@@ -7,6 +7,7 @@ import Header from '@/app/components/Header/Header.tsx';
 import TopProducts from '@/app/components/TopProducts/TopProducts.tsx';
 // @ts-ignore
 import ProductsComponents from '@/app/components/products/allProducts/productsComponent.tsx';
+import Footer from '@/app/components/footer/Footer';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
                 <Header />
                 <TopProducts />
                 <ProductsComponents />
+            <Footer></Footer>
         </main>
   );
 }
