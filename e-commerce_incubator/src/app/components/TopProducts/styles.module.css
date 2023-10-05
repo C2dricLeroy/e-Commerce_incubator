@@ -103,7 +103,7 @@
 
 @media (max-width: 768px) {
     .topContainer {
-        margin: 50% 2% 2%;
+        margin: 10% 2% 2%;
     }
 
     .productImage {
@@ -120,7 +120,7 @@
 
 @media (max-width: 500px) {
     .topContainer {
-        margin: 50% 2% 2%;
+        margin: 10% 2% 2%;
     }
 
     .productImage {

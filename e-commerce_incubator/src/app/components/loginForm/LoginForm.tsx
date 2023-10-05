@@ -3,11 +3,20 @@
 // @ts-ignore
 import useLoginViewModel from '@/viewmodels/LoginViewModel.ts';
 import { useRouter } from 'next/navigation';
+// @ts-ignore
+import { useAuth } from '@/app/context/AuthContext.tsx';
 import styles from './styles.module.css';
+// @ts-ignore
 
 export default function LoginForm() {
   const loginViewModel = useLoginViewModel();
   const router = useRouter();
+  const auth = useAuth();
+
+  function handleLogin(e: any) {
+    e.preventDefault();
+    auth?.login(loginViewModel.email, loginViewModel.password);
+  }
 
   return (
       <div className={styles.cont}>
@@ -60,12 +69,11 @@ export default function LoginForm() {
               </a>
             </div>
             <button type="submit" className={styles.submitButton}
-                    onClick={(e) => loginViewModel.signinSubmit(e)}>
+                    onClick={(e) => handleLogin(e)}>
               Connexion
             </button>
           </form>
         </div>
       </div>
-
   );
 }

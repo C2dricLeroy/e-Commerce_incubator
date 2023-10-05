@@ -3,7 +3,12 @@
 // @ts-ignore
 import SearchBar from '@/app/components/Header/searchBar.tsx';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
-import React, { useState, useRef, useEffect } from 'react';
+// @ts-ignore
+import { useAuth } from '@/app/context/AuthContext.tsx';
+// @ts-ignore
+import React, {
+  useState, useRef, useEffect,
+} from 'react';
 import Link from 'next/link';
 import styles from './style.module.css';
 
@@ -51,8 +56,8 @@ function useClickOutside(ref: any, callback: any) {
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<any>(null);
-  const dropdownHoverRef = useRef<any>(null);
   const userIconRef = useRef(null);
+  const auth = useAuth();
 
   useClickOutside(dropdownRef, () => {
     setIsDropdownOpen(false);
@@ -73,6 +78,10 @@ export default function Header() {
     }
   });
 
+  function handleLogout() {
+    auth?.logout();
+  }
+
   return (
       <header className={styles.headerContainer}>
           <div className={styles.logoContainer} >
@@ -90,6 +99,7 @@ export default function Header() {
           </div>
           <div className={styles.navContainer}>
               <SearchBar></SearchBar>
+          </div>
               <nav>
                   <ul className={styles.iconList} >
                       <li className={styles.li}>
@@ -105,22 +115,31 @@ export default function Header() {
                           </a>
                       </li>
                       {isDropdownOpen && (
-                          <div className={styles.dropdownContent} ref={dropdownRef} >
-                              <div>
-                                  <Link href={'/login'}>
-                                      <p className={styles.link}>Se connecter</p>
-                                  </Link>
-                              </div>
-                              <div>
-                                  <Link href={'/signup'}>
-                                      <p className={styles.link}><b>S&apos;inscrire</b></p>
-                                  </Link>
-                              </div>
+                          <div className={styles.dropdownContent} ref={dropdownRef}>
+                              {auth?.user ? (
+                                  <div>
+                                      <p>Logged In</p>
+                                      <a onClick={handleLogout}
+                                      >Déconnexion</a>
+                                  </div>
+                              ) : (
+                                  <>
+                                      <div>
+                                          <Link href={'/login'}>
+                                              <p className={styles.link}>Se connecter</p>
+                                          </Link>
+                                      </div>
+                                      <div>
+                                          <Link href={'/signup'}>
+                                              <p className={styles.link}><b>S&apos;inscrire</b></p>
+                                          </Link>
+                                      </div>
+                                  </>
+                              )}
                           </div>
                       )}
                   </ul>
               </nav>
-          </div>
       </header>
   );
 }

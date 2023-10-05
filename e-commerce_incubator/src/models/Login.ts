@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 export default class Login {
+  router = useRouter();
+
   test = '';
 
   async submitLogin(email: string, password: string) {
@@ -13,12 +16,14 @@ export default class Login {
       if (response.data.xsrfToken && response.data.userId) {
         localStorage.setItem('xsrfToken', response.data.xsrfToken);
         localStorage.setItem('id', response.data.userId);
-        axios.defaults.headers.common['x-xsrf-token'] = response.data.xsrfToken;
-      } else {
-        console.error('xsrf_token not found in the response');
+        this.router.push('/');
+        return response.data;
       }
+      console.error('xsrf_token not found in the response');
+      return false;
     } catch (error: any) {
-      throw new Error(error.message);
+      console.log(error.message);
+      return false;
     }
   }
 }
