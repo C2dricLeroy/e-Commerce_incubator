@@ -1,0 +1,22 @@
+.pageContainer {
+    background-color: #F1F1F1;
+}
+
+.container {
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    min-height: 70vh;
+}
+
+.accountContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
