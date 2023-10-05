@@ -23,12 +23,13 @@ function SearchBar() {
   }, [searchRef]);
 
   return (
-      <div ref={searchRef}>
+      <div className={styles.search} ref={searchRef}>
           <form className={styles.searchBar} onClick={searchViewModel.handleSearch}>
               <label htmlFor="search-form" hidden={true}>Search</label>
               <input className={styles.searchInput} id="search-form" placeholder="Search" type="text"
                      value={searchViewModel.searchTerm}
-                     onChange={searchViewModel.handleInputChange}/>
+                     onChange={searchViewModel.handleInputChange}
+                     autoComplete="off"/>
               <button type="submit" >Submit</button>
           </form>
           <div className={styles.results}>
