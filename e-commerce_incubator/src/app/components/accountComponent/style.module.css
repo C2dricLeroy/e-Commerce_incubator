@@ -1,3 +1,12 @@
 .container {
     display: flex;
+    min-height: 70vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.username {
+    display: flex;
+    flex-direction: row;
 }

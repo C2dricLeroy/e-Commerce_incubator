@@ -22,4 +22,24 @@ export default class User {
       throw new Error(error.message);
     }
   }
+
+  static async getUsernameById(id: string) {
+    try {
+      const response = await axios.get(`http://localhost:3005/users/getUsernameById/${id}`);
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(error.message);
+    }
+  }
+
+  static async changeUsername(username: string) {
+    try {
+      const response = await axios.put(`http://localhost:3005/users/changeUsername/${username}`);
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(error.message);
+    }
+  }
 }
