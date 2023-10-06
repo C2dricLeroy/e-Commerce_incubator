@@ -12,7 +12,7 @@ interface AuthContextShape {
   user: any;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-  isLoggedIn: () => Promise<boolean | null>;
+  /* isLoggedIn: () => Promise<boolean | null>; */
 
 }
 
@@ -60,22 +60,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = async () => {
-    await User.logout();
     setUser(null);
+    await User.logout();
   };
 
-  const isLoggedIn = async () => {
+  /* const isLoggedIn = async () => {
     try {
-      return await User.isLoggedIn();
+      const loggedIn = await User.isLoggedIn();
+      if (loggedIn) {
+        console.log('still logged in');
+      } else {
+        setUser(null);
+      }
     } catch (error: any) {
       console.error(error);
       return null;
     }
-  };
+  }; */
 
   return (
       <AuthContext.Provider value={{
-        user, login, logout, isLoggedIn,
+        user, login, logout,
       }}>
         {children}
       </AuthContext.Provider>

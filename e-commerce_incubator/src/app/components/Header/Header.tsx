@@ -63,6 +63,10 @@ export default function Header() {
     setIsDropdownOpen(false);
   });
 
+  /* useEffect(() => {
+    auth?.isLoggedIn();
+  }); */
+
   useHover(userIconRef, (hovered: any) => {
     if (hovered) {
       setIsDropdownOpen(true);
