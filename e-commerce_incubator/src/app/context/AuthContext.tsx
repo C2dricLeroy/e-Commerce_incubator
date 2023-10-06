@@ -12,7 +12,7 @@ interface AuthContextShape {
   user: any;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-  /* isLoggedIn: () => Promise<boolean | null>; */
+  isLoggedIn: () => void;
 
 }
 
@@ -61,26 +61,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     setUser(null);
+    localStorage.removeItem('xsrfToken');
+    localStorage.removeItem('id');
     await User.logout();
   };
 
-  /* const isLoggedIn = async () => {
+  const isLoggedIn = async () => {
     try {
-      const loggedIn = await User.isLoggedIn();
-      if (loggedIn) {
-        console.log('still logged in');
-      } else {
+      const response = await User.isLoggedIn();
+
+      if (response.message === 'non authentifié') {
         setUser(null);
       }
+      setUser(response.userData.user);
     } catch (error: any) {
       console.error(error);
-      return null;
     }
-  }; */
+  };
 
   return (
       <AuthContext.Provider value={{
-        user, login, logout,
+        user, login, logout, isLoggedIn,
       }}>
         {children}
       </AuthContext.Provider>

@@ -25,7 +25,12 @@ export default class User {
 
   static async getUsernameById(id: string) {
     try {
-      const response = await axios.get(`http://localhost:3005/users/getUsernameById/${id}`);
+      const response = await axios.get(`http://localhost:3005/users/getUsernameById/${id}`, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       return response.data;
     } catch (error: any) {
       console.error(error);
@@ -44,9 +49,15 @@ export default class User {
   }
 
   static async isLoggedIn() {
+    const xsrfToken = localStorage.getItem('xsrfToken');
     try {
-      const response = await axios.get('http://localhost:3005/users/isLoggedIn');
-      return !!response.data;
+      const response = await axios.get('http://localhost:3005/users/isLoggedIn', {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
     } catch (error: any) {
       console.error(error);
       throw new Error(error.message);

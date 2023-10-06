@@ -12,6 +12,12 @@ export default class Login {
       const response = await axios.post(
         'http://localhost:3005/users/login',
         { email, password },
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
       );
       if (response.data.xsrfToken && response.data.userId) {
         localStorage.setItem('xsrfToken', response.data.xsrfToken);
