@@ -42,4 +42,23 @@ export default class User {
       throw new Error(error.message);
     }
   }
+
+  static async isLoggedIn() {
+    try {
+      const response = await axios.get('http://localhost:3005/users/isLoggedIn');
+      return !!response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(error.message);
+    }
+  }
+
+  static async logout() {
+    try {
+      await axios.get('http://localhost:3005/users/logout');
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(error.message);
+    }
+  }
 }
