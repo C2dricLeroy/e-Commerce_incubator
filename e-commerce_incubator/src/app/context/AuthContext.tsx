@@ -63,13 +63,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     localStorage.removeItem('xsrfToken');
     localStorage.removeItem('id');
-    await User.logout();
+    const cookies = document.cookie.split('; ');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const [name] = cookie.split('=');
+      if (name === 'accessToken') {
+        document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        break;
+      }
+    }
+    setUser(null);
   };
 
   const isLoggedIn = async () => {
     try {
       const response = await User.isLoggedIn();
-
+      console.log(response);
       if (response.message === 'non authentifié') {
         setUser(null);
       }
