@@ -9,7 +9,7 @@ export default function SavedCart() {
   return (
       <div className={styles.container}>
           <h1>Mes paniers sauvegardés</h1>
-          <div className={styles.CartContainer}>
+          <div className={styles.cartContainer}>
               {savedCartViewModel.saveCart && savedCartViewModel.saveCart.length > 0 ? (
                 savedCartViewModel.saveCart.map((cart: any) => {
                   const totalPrice = cart.cart_item.reduce((accumulator: number, cartItem: any) => {
@@ -25,7 +25,6 @@ export default function SavedCart() {
                               </div>
                               <div className={styles.productText}>
                                   <h2 className={styles.productTitle}>{cart.name}</h2>
-                                  {/* Afficher le prix total calculé pour ce panier */}
                                   <p className={styles.productPrice}>{totalPrice} €</p>
                               </div>
                               <button className={styles.select}>Sélectionner</button>
@@ -33,7 +32,6 @@ export default function SavedCart() {
                   );
                 })
               ) : (
-                  // Afficher un message si le panier est vide
                   <p>Aucun panier sauvegardé</p>
               )}
           </div>
