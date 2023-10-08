@@ -123,7 +123,8 @@
 }
 
 .confirmation {
-
+    color: #E9E9E9;
+    font-size: 24px;
 }
 
 .changePassword {
@@ -170,5 +171,59 @@
 .deleteAccountButton:hover {
     background-color: #54362F;
     color: #E9E9E9;
+}
+
+.deleteAccountText {
+    font-size: 24px;
+    color: #E9E9E9;
+    margin-bottom: 50px;
+}
+
+.deleteButton {
+    background-color: #74362D;
+    color: #E9E9E9;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+    min-width: 100px;
+    width: 7%;
+    font-size: 16px;
+    font-family: Lora, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.deleteButton:hover {
+    background-color: #54362F;
+}
+
+.cancelDeleteButton {
+    background-color: #2D3142;
+    color: #E9E9E9;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+    min-width: 100px;
+    width: 7%;
+    font-size: 16px;
+    font-family: Lora, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cancelDeleteButton:hover {
+    background-color: #131313;
+    color: #E9E9E9;
+}
+
+.confirm {
+    color: #E9E9E9;
+    font-size: 24px;
 }
 

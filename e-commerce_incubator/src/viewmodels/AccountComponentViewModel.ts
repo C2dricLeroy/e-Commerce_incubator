@@ -7,15 +7,34 @@ export default function useAccountComponentViewModel() {
   const [usernameInput, setUsernameInput] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
+  const user = new User();
 
   const handleUsernameChange = async (event: any) => {
     try {
-      const response = await User.changeUsername(event.data);
+      const response = await user.changeUsername(event.data);
       if (response) {
         setConfirmation(true);
       }
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const handleDelete = async () => {
+    const id = localStorage.getItem('id');
+    if (id) {
+      try {
+        const response = await user.deleteUser(id);
+        console.log(response);
+        if (response) {
+          setConfirmDelete(true);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
   };
 
@@ -38,5 +57,9 @@ export default function useAccountComponentViewModel() {
     handleUsernameChange,
     setShowModal,
     showModal,
+    deleteModal,
+    setDeleteModal,
+    handleDelete,
+    confirmDelete,
   };
 }

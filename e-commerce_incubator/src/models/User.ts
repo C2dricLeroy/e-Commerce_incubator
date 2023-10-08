@@ -38,7 +38,7 @@ export default class User {
     }
   }
 
-  static async changeUsername(username: string) {
+  async changeUsername(username: string) {
     try {
       const response = await axios.put(`http://localhost:3005/users/changeUsername/${username}`);
       return response.data;
@@ -66,7 +66,23 @@ export default class User {
 
   static async logout() {
     try {
-      await axios.get('http://localhost:3005/users/logout');
+      const response = await axios.get('http://localhost:3005/users/logout');
+      console.log(response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(error.message);
+    }
+  }
+
+  async deleteUser(id: string) {
+    try {
+      return await axios.delete(`http://localhost:3005/users/delete/${id}`, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     } catch (error: any) {
       console.error(error);
       throw new Error(error.message);
