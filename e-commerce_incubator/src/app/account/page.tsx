@@ -19,10 +19,11 @@ export default function Account() {
   const auth = useAuth();
 
   useEffect(() => {
+    console.log('check if connected');
     if (!auth?.user) {
       router.push('/');
     }
-  });
+  }, [auth?.user]);
 
   return (
         <div className={styles.pageContainer}>

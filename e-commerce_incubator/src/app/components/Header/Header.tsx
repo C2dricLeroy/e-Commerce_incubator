@@ -65,11 +65,12 @@ export default function Header() {
   });
 
   useEffect(() => {
+    console.log('check if logged in');
     if (!isLoggedInCalled) {
       auth?.isLoggedIn();
       setIsLoggedInCalled(true);
     }
-  }, [auth, isLoggedInCalled]);
+  }, []);
 
   useHover(userIconRef, (hovered: any) => {
     if (hovered) {

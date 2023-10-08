@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const isLoggedIn = async () => {
     try {
       const response = await User.isLoggedIn();
-      if (response.message === 'non authentifié') {
+      if (response.status === 401) {
         setUser(null);
       }
       setUser(response.userData.user);
