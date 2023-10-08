@@ -11,7 +11,8 @@ export default function AccountComponent() {
       <div className={styles.container}>
           <div className={styles.topContainer}>
               <div className={styles.username}>
-                  <p>Nom d&apos;utilisateur: {accountComponentViewModel.username}</p>
+                  <p className={styles.usernameText}
+                  >Nom d&apos;utilisateur: {accountComponentViewModel.username}</p>
                   <button onClick={() => accountComponentViewModel.setShowModal(true)}
                   className={styles.changeUsernameButton}>
                       Changer mon nom d&apos;utilisateur</button>
@@ -39,16 +40,17 @@ export default function AccountComponent() {
                               Annuler</button>
                       </div>
                   )}
-                  {accountComponentViewModel.confirmation && <p>
+                  {accountComponentViewModel.confirmation && <p className={styles.confirmation}>
                       Le nom d&apos;utilisateur a été modifié avec succès.</p>}
               </div>
               <div className={styles.changePassword}>
-                  <p>Changer mon mot de passe</p>
+                  <button className={styles.changePasswordButton}>Changer mon mot de passe</button>
               </div>
           </div>
-          <div className={styles.bottomContainer}>
+          <button
+              className={styles.deleteAccountButton}>
               Supprimer mon compte
-          </div>
+          </button>
       </div>
   );
 }
