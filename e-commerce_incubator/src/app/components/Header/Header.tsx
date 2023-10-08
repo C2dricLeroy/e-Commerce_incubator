@@ -55,6 +55,7 @@ function useClickOutside(ref: any, callback: any) {
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLoggedInCalled, setIsLoggedInCalled] = useState(false);
   const dropdownRef = useRef<any>(null);
   const userIconRef = useRef(null);
   const auth = useAuth();
@@ -64,8 +65,11 @@ export default function Header() {
   });
 
   useEffect(() => {
-    auth?.isLoggedIn();
-  });
+    if (!isLoggedInCalled) {
+      auth?.isLoggedIn();
+      setIsLoggedInCalled(true);
+    }
+  }, [auth, isLoggedInCalled]);
 
   useHover(userIconRef, (hovered: any) => {
     if (hovered) {
