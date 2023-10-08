@@ -5,6 +5,7 @@ import User from '../models/User.ts';
 export default function useAccountComponentViewModel() {
   const [username, setUsername] = useState('');
   const [usernameInput, setUsernameInput] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
 
   const handleUsernameChange = async (event: any) => {
@@ -35,6 +36,7 @@ export default function useAccountComponentViewModel() {
     setUsernameInput,
     confirmation,
     handleUsernameChange,
-
+    setShowModal,
+    showModal,
   };
 }
