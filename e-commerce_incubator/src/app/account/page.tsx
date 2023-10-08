@@ -15,16 +15,6 @@ import { useAuth } from '@/app/context/AuthContext.tsx';
 import styles from './style.module.css';
 
 export default function Account() {
-  const router = useRouter();
-  const auth = useAuth();
-
-  useEffect(() => {
-    console.log('check if connected');
-    if (!auth?.user) {
-      router.push('/');
-    }
-  }, [auth?.user]);
-
   return (
         <div className={styles.pageContainer}>
             <Header></Header>

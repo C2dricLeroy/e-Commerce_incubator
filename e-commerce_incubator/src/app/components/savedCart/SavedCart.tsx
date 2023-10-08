@@ -11,23 +11,31 @@ export default function SavedCart() {
           <h1>Mes paniers sauvegardés</h1>
           <div className={styles.CartContainer}>
               {savedCartViewModel.saveCart && savedCartViewModel.saveCart.length > 0 ? (
+                savedCartViewModel.saveCart.map((cart: any) => {
+                  const totalPrice = cart.cart_item.reduce((accumulator: number, cartItem: any) => {
+                    const itemPrice = cartItem.quantity * cartItem.product.price;
+                    return accumulator + itemPrice;
+                  }, 0);
 
-                savedCartViewModel.saveCart.map((cart: any) => (
-                          <div className={styles.card} key={cart.id}>
+                  return (
+                          <div className={styles.card} key={cart.cart_id}>
                               <div className={styles.product}>
-                                  <img className={styles.productImage} src={`/products_images/${cart.image_path}`} alt={`${cart.name} image`} />
-                                  <p className={styles.category}>{cart.product_type.name}</p>
+                                  <img className={styles.productImage} src={`/products_images/${cart.cart_item[0].product.image_path}`} alt={`${cart.cart_item[0].product.name} image`} />
+                                  <p className={styles.price}>{cart.cart_name}</p>
                               </div>
                               <div className={styles.productText}>
                                   <h2 className={styles.productTitle}>{cart.name}</h2>
-                                  <p className={styles.productPrice}>{cart.price} €</p>
+                                  {/* Afficher le prix total calculé pour ce panier */}
+                                  <p className={styles.productPrice}>{totalPrice} €</p>
                               </div>
                               <button className={styles.select}>Sélectionner</button>
                           </div>
-                ))) : (
-                      <p>Aucun panier sauvegardé</p>
-              )
-              }
+                  );
+                })
+              ) : (
+                  // Afficher un message si le panier est vide
+                  <p>Aucun panier sauvegardé</p>
+              )}
           </div>
           <p>Charger plus</p>
       </div>

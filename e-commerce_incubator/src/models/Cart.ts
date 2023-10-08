@@ -1,9 +1,16 @@
 import axios from 'axios';
 
 export default class Cart {
-  static async getSavedCarts(id: string) {
+  static async getUserSavedCarts(id: string) {
     try {
-      const response = await axios.get(`http://localhost:3005/carts/getSavedCarts/${id}`);
+      console.log(id);
+      const response = await axios.get(`http://localhost:3005/cart/getUserCart/${id}`, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response.data);
       return response.data;
     } catch (error: any) {
       console.error(error);
