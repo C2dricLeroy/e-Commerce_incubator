@@ -10,6 +10,7 @@ import React, {
   useState, useRef, useEffect,
 } from 'react';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 import styles from './style.module.css';
 
 function useHover(ref: any, callback: any) {
@@ -59,10 +60,18 @@ export default function Header() {
   const dropdownRef = useRef<any>(null);
   const userIconRef = useRef(null);
   const auth = useAuth();
+  const [cartCount, setCartCount] = useState(0);
 
   useClickOutside(dropdownRef, () => {
     setIsDropdownOpen(false);
   });
+
+  const checkCartInCookies = () => {
+    const cartCookie = Cookies.get('MeowsicCart');
+    if (cartCookie) {
+      setCartCount(cartCookie.length);
+    }
+  };
 
   useEffect(() => {
     console.log('check if logged in');
@@ -70,6 +79,7 @@ export default function Header() {
       auth?.isLoggedIn();
       setIsLoggedInCalled(true);
     }
+    checkCartInCookies();
   }, []);
 
   useHover(userIconRef, (hovered: any) => {
@@ -112,8 +122,11 @@ export default function Header() {
               <nav>
                   <ul className={styles.iconList} >
                       <li className={styles.li}>
-                          <a className={styles.icon} href="#">
+                          <a className={styles.icon} href="/cart">
                               <FaShoppingCart/>
+                              {cartCount > 0 && (
+                                  <span className={styles.cartCount}></span>
+                              )}
                           </a>
                       </li>
                       <li className={styles.li}>

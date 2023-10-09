@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import Header from '@/app/components/Header/Header.tsx';
 // @ts-ignore
 import Footer from '@/app/components/footer/Footer.tsx';
+import Cookies from 'js-cookie';
 import styles from './styles.module.css';
 
 interface PageProps {
@@ -29,6 +30,29 @@ export default function Page({ params, searchParams }: PageProps) {
   };
 
   const handleAddToCart = () => {
+    const cartCookie = Cookies.get('MeowsicCart');
+    const expirationDate = new Date();
+    expirationDate.setMinutes(expirationDate.getMinutes() + 30);
+
+    if (!cartCookie) {
+      const newCart = [{
+        id,
+        quantity: selectedQuantity,
+      }];
+      Cookies.set('MeowsicCart', JSON.stringify(newCart), {
+        expires: expirationDate,
+      });
+    } else {
+      const existingCart = JSON.parse(cartCookie);
+      const itemToAdd = {
+        id,
+        quantity: selectedQuantity,
+      };
+      existingCart.push(itemToAdd);
+      Cookies.set('cart', JSON.stringify(existingCart), {
+        expires: expirationDate,
+      });
+    }
     console.log(selectedQuantity, id);
   };
 
