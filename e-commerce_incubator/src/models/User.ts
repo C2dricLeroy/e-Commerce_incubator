@@ -12,6 +12,13 @@ export default class User {
         password,
       });
 
+      console.log(response);
+
+      const createCart = await axios.post('http://localhost:3005/cart/saveCart', {
+        cart_name: 'Cart',
+        user_id: response.data.id,
+      });
+
       if (this && typeof window !== 'undefined') {
         this.router.push('/login');
       }
