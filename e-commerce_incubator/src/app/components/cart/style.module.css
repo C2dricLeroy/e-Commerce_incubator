@@ -72,7 +72,7 @@
 }
 
 .deleteButton {
-    background-color: #dc3545;
+    color: #74362D;
 }
 
 .total {
@@ -105,6 +105,19 @@
     padding: 10px 20px;
     cursor: pointer;
     margin-top: 10px;
+}
+
+.button {
+    background-color: #2D3149;
+    color: #E9E9E9;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.button:hover {
+    background-color: #EF8354;
+    color: #2D3149;
+    padding: 4px;
 }
 
 @media only screen and (max-width: 670px) {

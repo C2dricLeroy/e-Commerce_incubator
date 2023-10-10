@@ -17,14 +17,18 @@ export default function Cart() {
                           <div className={styles.product}>
                               <img className={styles.productImage} src={`/products_images/${item.image_path}`} alt={`${item.name} image`} />
                               <p className={styles.productTitle}>{item.name}</p>
-                              <button>
+                              <button className={styles.button}
+                                      onClick={() => cartViewModel.handleMinus(item.product_id)}>
                                   <FaMinus />
                               </button>
                               <p className={styles.quantity}>{item.quantity}</p>
-                              <button>
+                              <button className={styles.button}
+                                      onClick={() => cartViewModel.handlePlus(item.product_id)}>
                                   <FaPlus />
                               </button>
-                              <button>Supprimer</button>
+                              <button className={styles.deleteButton}
+                                      onClick={() => cartViewModel.handleDelete(item.product_id)}
+                              >Supprimer</button>
                           </div>
                       </div>
                   ))}
