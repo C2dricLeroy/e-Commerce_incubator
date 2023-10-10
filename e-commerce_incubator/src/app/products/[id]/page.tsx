@@ -29,10 +29,12 @@ export default function Page({ params, searchParams }: PageProps) {
     setSelectedQuantity(newQuantity);
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event: any) => {
     const cartCookie = Cookies.get('MeowsicCart');
     const expirationDate = new Date();
     expirationDate.setMinutes(expirationDate.getMinutes() + 30);
+
+    event.preventDefault();
 
     if (!cartCookie) {
       const newCart = [{
@@ -49,11 +51,11 @@ export default function Page({ params, searchParams }: PageProps) {
         quantity: selectedQuantity,
       };
       existingCart.push(itemToAdd);
-      Cookies.set('cart', JSON.stringify(existingCart), {
+
+      Cookies.set('MeowsicCart', JSON.stringify(existingCart), {
         expires: expirationDate,
       });
     }
-    console.log(selectedQuantity, id);
   };
 
   useEffect(() => {
