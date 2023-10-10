@@ -35,9 +35,19 @@ export default function Cart() {
               </div>
               <div className={styles.total}>
                   <div className={styles.totalText}>
-                      <p>Total des articles</p>
-                      <p>Livraison</p>
-                      <p>Total</p>
+                      <div className={styles.text}>
+                          <p>Total des articles</p>
+                          <p>{cartViewModel.totalPrice}</p>
+                      </div>
+                      <div className={styles.text}>
+                          <p>Livraison</p>
+                          <p>4.99 €</p>
+                      </div>
+                      <div className={styles.text}>
+                          <p>Total</p>
+                          <p>{cartViewModel.totalPrice + 4.99}</p>
+                      </div>
+
                   </div>
                   <div className={styles.paymentButton}>
                       <button>Commander</button>

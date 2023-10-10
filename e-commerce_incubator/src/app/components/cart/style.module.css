@@ -120,6 +120,14 @@
     padding: 4px;
 }
 
+.text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 175px;
+}
+
 @media only screen and (max-width: 670px) {
     .total {
         width: 100%;

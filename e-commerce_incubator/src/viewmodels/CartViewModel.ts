@@ -4,8 +4,8 @@ import Cookies from 'js-cookie';
 import Products from '@/models/Products.ts';
 
 export default function useCartViewModel() {
-  const [cart, setCart] = useState([]);
-  const [cartProducts, setCartProducts] = useState<Products[]>([]);
+  const [cart, setCart] = useState<any[]>([]);
+  const [cartProducts, setCartProducts] = useState<any[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -30,7 +30,11 @@ export default function useCartViewModel() {
     };
 
     const fetchTotalPrice = () => {
-
+      let total = 0;
+      for (const product of cartProducts) {
+        total += product.quantity * product.price;
+      }
+      setTotalPrice(total);
     };
 
     fetchCartProduct();
@@ -92,10 +96,6 @@ export default function useCartViewModel() {
     }
   };
 
-  const calculateTotalPrice = () => {
-
-  };
-
   const removeFromCart = () => {
 
   };
@@ -104,8 +104,8 @@ export default function useCartViewModel() {
     cart,
     handleMinus,
     handlePlus,
-    calculateTotalPrice,
     removeFromCart,
+    totalPrice,
     cartProducts,
     handleDelete,
   };
