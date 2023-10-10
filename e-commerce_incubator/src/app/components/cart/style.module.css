@@ -1,0 +1,138 @@
+.myCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 78vw;
+}
+
+.cartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.card:first-of-type {
+    margin-top: 10%;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.productImage {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.productTitle {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.quantity {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.quantityButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantityButtons  {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+}
+
+.totalText {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.paymentButton  {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.saveCart {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 670px) {
+    .total {
+        width: 100%;
+    }
+    .cartContainer {
+        width: 100%;
+    }
+
+    .myCart {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .productImage {
+        width: 200px;
+        height: 200px;
+    }
+
+    .card {
+        min-width: 90vw;
+    }
+
+    .total {
+        min-width: 90vw;
+    }
+
+}
+
+
