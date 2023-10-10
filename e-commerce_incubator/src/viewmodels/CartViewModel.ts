@@ -36,7 +36,7 @@ export default function useCartViewModel() {
     fetchCartProduct();
     fetchCart();
     fetchTotalPrice();
-  }, [cart]);
+  }, [cart, cartProducts]);
 
   const handleMinus = (id: string) => {
     const cartCookie = Cookies.get('MeowsicCart');
@@ -62,7 +62,7 @@ export default function useCartViewModel() {
     }
   };
 
-  const handlePlus = (id: number) => {
+  const handlePlus = (id: string) => {
     const cartCookie = Cookies.get('MeowsicCart');
 
     if (cartCookie) {
@@ -70,6 +70,8 @@ export default function useCartViewModel() {
       const updatedCart = cookieCart.map((item: any) => {
         if (item.id == id) {
           item.quantity += 1;
+          console.log('item', typeof item.id);
+          console.log(typeof id);
         }
         return item;
       });
@@ -80,7 +82,14 @@ export default function useCartViewModel() {
   };
 
   const handleDelete = (id: number) => {
+    const cartCookie = Cookies.get('MeowsicCart');
 
+    if (cartCookie) {
+      const cookieCart = JSON.parse(cartCookie);
+      const updatedCart = cookieCart.filter((item: any) => item.id != id);
+
+      Cookies.set('MeowsicCart', JSON.stringify(updatedCart));
+    }
   };
 
   const calculateTotalPrice = () => {
