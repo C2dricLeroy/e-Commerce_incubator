@@ -47,10 +47,9 @@ export default function Cart() {
                           <p>Total</p>
                           <p>{cartViewModel.totalPrice + 4.99}</p>
                       </div>
-
                   </div>
                   <div className={styles.paymentButton}>
-                      <button>Commander</button>
+                      <button onClick={cartViewModel.handlePayment}>Commander</button>
                   </div>
                   <div className={styles.saveCart}>
                       <button>Sauvegarder ce panier</button>
