@@ -104,12 +104,12 @@ export default function Header() {
   return (
       <header className={styles.headerContainer}>
           <div className={styles.logoContainer} >
-              <svg width="100" height="100" href="../../../../public/logo.svg">
-                  <image className={styles.logo} href="/logo.svg" width="100" height="100" />
+              <svg width="200" height="200" href="../../../../public/logo.svg">
+                  <image className={styles.logo} href="/logo.svg" width="150" height="150" />
               </svg>
               <div className={styles.titleContainer}>
                   <h1>
-                      <Link className={styles.title}href="/">
+                      <Link className={styles.title} href="/">
                           Meowsic
                       </Link>
                   </h1>

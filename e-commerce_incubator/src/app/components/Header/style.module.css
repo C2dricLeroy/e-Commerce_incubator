@@ -1,7 +1,7 @@
 .headerContainer {
     width: 100%;
     height: auto;
-    background-color: #F7F7F7;
+    background-color: #F9F9F9;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,10 +37,9 @@
 .searchInput {
     width: 100%;
     min-width: 220px;
-    background: #E9E9E9;
+    background: white;
     padding: 10px;
-    border: none;
-    border-radius: 4px;
+    border-bottom: 1px solid #2D3149;
     outline: none;
     transition: 0.4s;
     font-size: 16px;
@@ -49,7 +48,7 @@
 }
 
 .searchInput:hover {
-    background: #F9F9F9;
+    background: #F1F1F1;
 }
 
 .iconList {
